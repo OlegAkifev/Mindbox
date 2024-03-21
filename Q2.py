@@ -13,18 +13,18 @@ import math
 class ShapeCalculator:
     # Проверка на существование треугольника
     @classmethod
-    def is_triangle(cls, side1, side2, side3):
+    def is_triangle(cls, side1: int, side2: int, side3: int) -> True | False:
         if side1 + side2 > side3 and side1 + side3 > side2 and side2 + side3 > side1:
             return True
         else:
             return False
 
     @staticmethod
-    def circle_area(radius):
+    def circle_area(radius: int) -> int:
         return math.pi * radius ** 2
 
     @staticmethod
-    def triangle_area(side1, side2, side3):
+    def triangle_area(side1: int, side2: int, side3: int) -> float | str:
         if ShapeCalculator.is_triangle(side1, side2, side3):
             # Полупериметр треугольника
             s = (side1 + side2 + side3) / 2
@@ -34,7 +34,7 @@ class ShapeCalculator:
         return f'Треугольник с такими сторонами не может существовать'
 
     @staticmethod
-    def is_right_triangle(side1, side2, side3):
+    def is_right_triangle(side1: int, side2: int, side3: int) -> float | str:
         if ShapeCalculator.is_triangle(side1, side2, side3):
             sides = [side1, side2, side3]
             sides.sort()
@@ -45,7 +45,7 @@ class ShapeCalculator:
         return f'Треугольник с такими сторонами не может существовать'
 
     @staticmethod
-    def calculate_area(*args):
+    def calculate_area(*args: [int]) -> float | str:
         # Площадь круга
         if len(args) == 1:
             radius = args[0]
@@ -55,7 +55,7 @@ class ShapeCalculator:
         elif len(args) == 3:
             return ShapeCalculator.triangle_area(*args)
         else:
-            return len(args)
+            return f'Некорректный ввод'
 
 
 print(ShapeCalculator.circle_area(5))
